@@ -1,5 +1,8 @@
 # Gabarito oficial
 
+> EXEMPLO ILUSTRATIVO. O enunciado e a resolucao abaixo foram inventados apenas para
+> mostrar o formato. Nao e prova real e nao corresponde a nenhuma disciplina.
+
 Escreva aqui em portugues, como voce explicaria para o corretor. Este texto e o unico
 conhecimento que o modelo tem sobre a sua prova: ele nao pode conceder ponto que nao esteja
 previsto aqui.

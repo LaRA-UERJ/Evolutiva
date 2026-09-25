@@ -1,15 +1,19 @@
-# Exemplo de configuracao de uma atividade.
-# Copie para config/avaliacao.toml e edite.
+# EXEMPLO ILUSTRATIVO.
+# O conteudo abaixo (disciplina, questoes, valores) foi inventado apenas para mostrar
+# o formato. Nao e ementa, nao e plano de curso, nao e prova real.
+#
+# Copie para config/avaliacao.toml e substitua tudo pelo seu.
 #
 # Regra: o maximo da questao tem que ser igual a soma dos maximos dos criterios.
 
 [avaliacao]
-disciplina = "Calculo Vetorial"
-titulo = "Atividade em sala 3 - Produto vetorial e planos"
-data = "2026-09-25"
-modelo = "qwen3-vl:8b"          # modelo de visao no Ollama
+disciplina = "Nome da disciplina"
+titulo = "Nome da atividade"
+data = "AAAA-MM-DD"
+# Modelo e servidor: escolha ainda em aberto (ver README, "O que ainda nao esta decidido").
+modelo = "qwen3-vl:8b"
 servidor = "http://oraculo:30068"
-rodadas = 3                      # correcoes independentes por folha (3 = neutro, rigoroso, detalhado)
+rodadas = 3                      # correcoes independentes por folha
 
 [[questoes]]
 id = "Q1"
