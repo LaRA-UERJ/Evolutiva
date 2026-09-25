@@ -69,6 +69,8 @@ Nada aqui foi validado na prática ainda. É o desenho a ser testado.
 6. Qual modelo, e onde ele roda.
 7. Quantas folhas por vez e quanto tempo leva para uma turma.
 8. Quantos caminhos alternativos aparecem numa turma real — é o que decide se a passada de colheita é barata ou se vira trabalho.
+9. **Onde cortar o gatilho de revisão.** É o botão que troca erro por trabalho: quanto mais apertado, mais folha cai no colo do professor e menos erro passa. Este desenho usa a discordância entre rodadas no nível do item, mas o valor de corte ainda não foi escolhido.
+10. **O que a contestação do aluno cobre e o que ela não cobre.** Ela pega o erro contra o aluno. Nota alta indevida ninguém contesta — e o viés documentado é justamente o positivo. Falta definir a auditoria do outro lado.
 
 ## Evidência considerada
 
@@ -76,8 +78,10 @@ Números de terceiros, não medidos neste sistema:
 
 - Correção de prova manuscrita por critério com modelo de visão: **QWK 0,727** contra o professor, enquanto **dois professores humanos entre si deram 0,551** (1.982 registros de critério, 20 configurações).
 - O mesmo estudo: em 5 rodadas sobre o mesmo material, **50 a 64% dos critérios mudaram de nota**. Correção de rodada única é instável — daí as rodadas repetidas no passo 3.
-- Pipeline completo em prova de engenharia com diagrama desenhado à mão: **diferença média de ~8 pontos** e **revisão humana acionada em menos de 20% dos casos**.
-- Sem solução de referência, e com prompt simples, o pipeline **superavalia sistematicamente**.
+- Pipeline completo em prova de engenharia com diagrama desenhado à mão: **diferença média de ~8 pontos numa escala de 0 a 100** — ou seja, 8% da prova. Esse número vale junto com o gatilho de revisão: **menos de 20% das folhas revisadas** quando o gatilho é uma discordância de 40 pontos (de 100) entre os corretores.
+- O gatilho deles é a discordância **entre os corretores da própria máquina**, e foi medido no nível da prova inteira. O artigo diz explicitamente que aplicar o mesmo critério no nível da questão ou do item reduz a quantidade de intervenção humana — que é o que este desenho faz. E a taxa nunca chega a zero: existem folhas em que os corretores discordam sempre.
+- O modo de falha documentado é o **viés positivo**: um dos modelos testados apresentou "superavaliação sistemática", e basta tirar as regras e o gabarito do prompt para que o viés positivo apareça nos dois melhores modelos.
+
 - 258 professores dos EUA relataram **9,9 h por semana** corrigindo (levantamento da Learnosity), e em amostra de docentes universitários a correção aparece associada a mais emoção negativa que pesquisa ou aula (Schwab et al., *Studies in Higher Education*, 2024) — ambas as citações conforme o levantamento do CVWW 2026.
 
 ## Estado
