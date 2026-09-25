@@ -27,12 +27,35 @@ O professor olha depois.
 
 ## Desenho proposto (proposta, não decisão tomada)
 
-1. **Captura** — a folha respondida à mão é fotografada ou escaneada. Foto de celular basta.
-2. **Leitura** — um modelo de visão lê a folha e transcreve, marcando o que não conseguiu ler.
-3. **Correção por critério** — o modelo recebe o gabarito escrito pelo professor e devolve pontos por critério, com a justificativa de cada um.
-4. **Rodadas independentes** — a mesma folha é corrigida mais de uma vez. Onde as correções concordam, o item está resolvido; onde divergem, o item vai para o professor.
-5. **Devolutiva ao aluno** — o que ele fez, a correção por critério, os argumentos, a nota, e o espaço para concordar ou discordar.
-6. **Revisão do professor** — o professor olha o que foi contestado e o que ficou em dúvida. O resto segue.
+A prova já existe estruturada: **sempre quatro questões com vários itens**, e o gabarito já é escrito pelo professor. O revisor digital compara com o gabarito que já existe — não inventa critério próprio.
+
+São três passadas, e a ordem importa.
+
+1. **Leitura** — o modelo de visão transcreve cada folha e extrai, item por item, o caminho de resolução que o aluno usou. Nesta passada ele **não** julga se está certo.
+
+2. **Colheita de caminhos alternativos** — antes de corrigir qualquer coisa, o sistema lista os caminhos que chegaram ao resultado por rota diferente da do gabarito, mostrando o trabalho do aluno. O professor decide, um a um, quais são válidos, e o gabarito é incrementado.
+
+   É aqui que o custo cai. O julgamento caro do professor passa a ser gasto **por caminho distinto**, não por aluno: se doze alunos usam a mesma solução alternativa, é uma decisão só, e depois a correção trata os doze igual.
+
+3. **Correção final** — com o gabarito já enriquecido, cada folha é corrigida item por item contra ele, em rodadas independentes. Onde as rodadas concordam, o item está resolvido; onde divergem, o item vai para o professor.
+
+4. **Devolutiva ao aluno** — o que ele fez, a correção por item, os argumentos, a nota, e o espaço para concordar ou discordar.
+
+5. **Revisão do professor** — o professor olha o que foi contestado e o que ficou em dúvida. O resto segue.
+
+### Por que a comparação com o gabarito reduz a alucinação
+
+A tarefa do modelo deixa de ser "resolver a questão" e passa a ser "ler o que o aluno escreveu e comparar com o gabarito". Ele não precisa saber matemática melhor que o professor; precisa ler e comparar. Essa é uma tarefa muito mais restrita, e é o que torna o erro de correção improvável em vez de improvável por sorte.
+
+### O limite, e onde ele morde
+
+Na colheita, sem o gabarito na frente, o modelo pode racionalizar uma resposta **errada** como caminho alternativo válido. Por isso ele não opina nessa passada: apenas apresenta a rota e o trabalho do aluno, e **quem declara válido é o professor**.
+
+O erro inverso é pior. Um caminho aceito sem exame contamina a turma inteira na passada seguinte. Essa é a passada que merece atenção do professor; a correção final, não.
+
+### Consequência estrutural
+
+Com questões de vários itens, a rubrica passa a ser **por item**, não por questão.
 
 Nada aqui foi validado na prática ainda. É o desenho a ser testado.
 
@@ -40,16 +63,19 @@ Nada aqui foi validado na prática ainda. É o desenho a ser testado.
 
 1. Como o aluno recebe a devolutiva, e como a contestação volta para o professor.
 2. Se a nota da máquina vale direto ou só depois da revisão do professor.
-3. Quantas avaliações por semestre e quanto vale cada uma.
-4. O que fazer com folha ilegível.
-5. Qual modelo e onde ele roda.
+3. Quantas avaliações por semestre e quanto vale cada uma na média da disciplina.
+4. Se a atividade é o aluno **responder** questões ou o aluno **escrever** as questões.
+5. O que fazer com folha ilegível.
+6. Qual modelo, e onde ele roda.
+7. Quantas folhas por vez e quanto tempo leva para uma turma.
+8. Quantos caminhos alternativos aparecem numa turma real — é o que decide se a passada de colheita é barata ou se vira trabalho.
 
 ## Evidência considerada
 
 Números de terceiros, não medidos neste sistema:
 
 - Correção de prova manuscrita por critério com modelo de visão: **QWK 0,727** contra o professor, enquanto **dois professores humanos entre si deram 0,551** (1.982 registros de critério, 20 configurações).
-- O mesmo estudo: em 5 rodadas sobre o mesmo material, **50 a 64% dos critérios mudaram de nota**. Correção de rodada única é instável — daí o passo 4.
+- O mesmo estudo: em 5 rodadas sobre o mesmo material, **50 a 64% dos critérios mudaram de nota**. Correção de rodada única é instável — daí as rodadas repetidas no passo 3.
 - Pipeline completo em prova de engenharia com diagrama desenhado à mão: **diferença média de ~8 pontos** e **revisão humana acionada em menos de 20% dos casos**.
 - Sem solução de referência, e com prompt simples, o pipeline **superavalia sistematicamente**.
 - 258 professores dos EUA relataram **9,9 h por semana** corrigindo (levantamento da Learnosity), e em amostra de docentes universitários a correção aparece associada a mais emoção negativa que pesquisa ou aula (Schwab et al., *Studies in Higher Education*, 2024) — ambas as citações conforme o levantamento do CVWW 2026.
