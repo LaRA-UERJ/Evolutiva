@@ -4,7 +4,9 @@
 #
 # Copie para config/avaliacao.toml e substitua tudo pelo seu.
 #
-# Regra: o maximo da questao tem que ser igual a soma dos maximos dos criterios.
+# Estrutura: a prova tem QUESTOES, cada questao tem ITENS, e a correcao acontece por ITEM.
+#   maximo do item   = soma dos maximos dos criterios daquele item
+#   maximo da questao = soma dos maximos dos itens
 
 [avaliacao]
 disciplina = "Nome da disciplina"
@@ -15,31 +17,40 @@ modelo = "qwen3-vl:8b"
 servidor = "http://oraculo:30068"
 rodadas = 3                      # correcoes independentes por folha
 
+# A prova real tem quatro questoes. Aqui ficam duas, so para mostrar o formato.
+
 [[questoes]]
 id = "Q1"
-enunciado = "Determine a equacao geral do plano que passa por A(1,0,2), B(2,1,1) e C(0,2,3)."
-max = 4.0
-criterios = [
-  { nome = "montou os vetores diretores AB e AC", max = 1.0 },
-  { nome = "calculou o produto vetorial (vetor normal)", max = 2.0 },
-  { nome = "escreveu a equacao geral do plano corretamente", max = 1.0 },
-]
+enunciado = "enunciado da questao 1"
+
+  [[questoes.itens]]
+  id = "Q1a"
+  enunciado = "enunciado do item a"
+  max = 2.0
+  criterios = [
+    { nome = "primeiro passo esperado", max = 1.0 },
+    { nome = "resultado do item", max = 1.0 },
+  ]
+
+  [[questoes.itens]]
+  id = "Q1b"
+  enunciado = "enunciado do item b, que depende do item a"
+  max = 2.0
+  criterios = [
+    { nome = "usou o resultado do item a", max = 0.5 },
+    { nome = "metodo correto", max = 1.0 },
+    { nome = "resultado do item", max = 0.5 },
+  ]
 
 [[questoes]]
 id = "Q2"
-enunciado = "Calcule a area do triangulo de vertices A, B e C."
-max = 3.0
-criterios = [
-  { nome = "usou area = |AB x AC| / 2", max = 1.0 },
-  { nome = "valor numerico correto", max = 2.0 },
-]
+enunciado = "enunciado da questao 2"
 
-[[questoes]]
-id = "Q3"
-enunciado = "Explique por que o produto vetorial de dois vetores paralelos e o vetor nulo."
-max = 3.0
-criterios = [
-  { nome = "relacionou paralelismo com dependencia linear ou angulo 0/180", max = 1.5 },
-  { nome = "usou |u x v| = |u||v| sen(theta) e concluiu sen = 0", max = 1.0 },
-  { nome = "justificativa coerente e sem contradicao", max = 0.5 },
-]
+  [[questoes.itens]]
+  id = "Q2a"
+  enunciado = "item discursivo, sem conta"
+  max = 3.0
+  criterios = [
+    { nome = "mecanismo nomeado corretamente", max = 1.5 },
+    { nome = "justificativa coerente e sem contradicao", max = 1.5 },
+  ]
