@@ -1,0 +1,17 @@
+# Dados de aluno: NUNCA versionar (nome, caligrafia, desempenho = dado pessoal)
+entrada/
+saida/
+
+# Configuracao em uso (gabarito de prova viva nao vai pro repositorio publico)
+config/avaliacao.toml
+config/gabarito.md
+
+# So os exemplos entram no repositorio
+!config/*.exemplo.toml
+!config/*.exemplo.md
+
+# cache
+__pycache__/
+*.py[cod]
+.venv/
+.venv*/
